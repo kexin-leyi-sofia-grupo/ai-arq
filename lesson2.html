@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <title>AI Edited Imagens · Lesson 2 — Barcelos</title>
 <style>
 /* 全局 / BASE */
@@ -29,15 +31,15 @@ border-radius:6px}
 .navlinks a:hover{background:var(--soft);color:var(--blue)}
 .navlinks a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 /* 左侧汉堡菜单 / SIDE MENU (hamburger, top-left) */
-.sidemenu{position:fixed;top:0;left:0;z-index:60;height:62px;display:flex;
-align-items:center;padding:0 14px}
+.sidemenu{position:fixed;top:0;left:0;z-index:80;height:auto;min-height:62px;display:flex;
+align-items:center;padding:0 14px;overflow:visible}
 .burger{width:34px;height:24px;display:flex;flex-direction:column;
 justify-content:space-between;background:none;border:0;padding:0;cursor:pointer}
 .burger span{display:block;height:3px;border-radius:2px;background:var(--blue);
 transition:background .2s ease}
 .sidemenu:hover .burger span,.sidemenu.open .burger span{background:var(--green)}
 .burger:focus-visible{outline:2px solid var(--green);outline-offset:4px}
-.sm-panel{position:absolute;top:100%;left:0;width:min(300px,85vw);
+.sm-panel{position:absolute;top:100%;left:0;width:min(340px,90vw);z-index:90;overflow:visible;
 background:#fff;border:1px solid var(--line);border-left:none;
 border-radius:0 0 var(--radius) 0;box-shadow:0 16px 34px rgba(10,22,38,.18);
 padding:10px 0;opacity:0;visibility:hidden;transform:translateX(-18px);
