@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enquadramento Técnico e Legal — Technical and Legal Framework</title>
+<meta name="description" content="Technical and legal framework relevant to architectural design in Portugal — PDM Barcelos, RGEU, Energy, Accessibility, Urban Requirements, Synthesis.">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 2rem; font-size: 16px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background: #fafaf8;
+  color: #1a1a1a;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+@media (max-width: 768px) {
+  .container { padding: 0 1.25rem; }
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  border-bottom: 1px solid #d4d4d0;
+  padding: 3.5rem 0 2.5rem;
+  margin-bottom: 0;
+}
+.site-header .container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.site-header .eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  font-weight: 500;
+}
+.site-header h1 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #1a1a1a;
+}
+.site-header .subtitle {
+  font-size: 1rem;
+  color: #555;
+  max-width: 640px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.site-header .meta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* ===== NAVIGATION ===== */
+.site-nav {
+  border-bottom: 1px solid #d4d4d0;
+  background: #fafaf8;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-nav .container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-nav .container::-webkit-scrollbar { display: none; }
+.site-nav a {
+  display: block;
+  padding: 1rem 1.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #555;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  font-weight: 500;
+}
+.site-nav a:hover,
+.site-nav a:focus {
+  color: #1a1a1a;
+  border-bottom-color: #1a1a1a;
+  outline: none;
+}
+.site-nav a:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: -2px;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid #e8e8e4;
+}
+.section:last-of-type {
+  border-bottom: none;
+}
+.section-header {
+  margin-bottom: 2.5rem;
+}
+.section-number {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaa;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.section-header h2 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+.section-header .section-desc {
+  font-size: 0.9rem;
+  color: #666;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* ===== TABLES ===== */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -0.5rem;
+  padding: 0 0.5rem;
+  border: 1px solid #d4d4d0;
+  border-radius: 2px;
+  background: #fff;
+}
+table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+thead {
+  background: #f4f4f0;
+  border-bottom: 2px solid #d4d4d0;
+}
+thead th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #555;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+tbody tr {
+  border-bottom: 1px solid #e8e8e4;
+  transition: background 0.15s;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #fcfcfa; }
+tbody td {
+  padding: 0.85rem 1rem;
+  vertical-align: top;
+  color: #2a2a2a;
+}
+tbody td:first-child {
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: 180px;
+  white-space: nowrap;
+}
+td .ref {
+  font-size: 0.78rem;
+  color: #666;
+  display: block;
+  margin-top: 0.25rem;
+}
+td .citation {
+  font-style: italic;
+  color: #555;
+  font-size: 0.82rem;
+  border-left: 2px solid #d4d4d0;
+  padding-left: 0.6rem;
+  margin-top: 0.4rem;
+  display: block;
+}
+td .flag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+td .flag.no-source {
+  background: #fef3e2;
+  color: #8a6000;
+  border: 1px solid #f0d8a8;
+}
+td .flag.imperative {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+td .flag.conditional {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #bbdefb;
+}
+
+/* Synthesis table special styling */
+.synthesis-table table {
+  min-width: 1100px;
+}
+.synthesis-table thead {
+  background: #1a1a1a;
+}
+.synthesis-table thead th {
+  color: #fafaf8;
+  font-weight: 600;
+}
+.synthesis-table tbody td:first-child {
+  background: #f4f4f0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: #1a1a1a;
+  color: #ccc;
+  padding: 3rem 0;
+  margin-top: 2rem;
+}
+.site-footer h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+.site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+.site-footer ul {
+  list-style: none;
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+.site-footer li {
+  padding: 0.15rem 0;
+  color: #aaa;
+}
+.site-footer li strong {
+  color: #ddd;
+  font-weight: 600;
+}
+.site-footer .footer-bottom {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+  font-size: 0.75rem;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  background: #1a1a1a;
+  color: #fafaf8;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 200;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: #333;
+}
+.back-to-top:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 3px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .site-header { padding: 2.5rem 0 1.75rem; }
+  .section { padding: 2.5rem 0 2rem; }
+  table { font-size: 0.8rem; min-width: 700px; }
+  thead th { padding: 0.7rem 0.75rem; font-size: 0.68rem; }
+  tbody td { padding: 0.7rem 0.75rem; }
+  tbody td:first-child { min-width: 140px; }
+  .synthesis-table table { min-width: 900px; }
+  .site-nav a { padding: 0.85rem 1rem; font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header" id="top">
+  <div class="container">
+    <span class="eyebrow">Architecture Coursework — Research Documentation</span>
+    <h1>Enquadramento Técnico e Legal</h1>
+    <p class="subtitle">This webpage presents the technical and legal framework relevant to architectural design in Portugal, covering municipal planning regulations, building codes, energy performance, accessibility requirements, and urban licensing procedures — compiled for a residential project in the municipality of Barcelos.</p>
+    <p class="meta">Plot: 1,523 m² · ER I — Espaço Residencial Nível I · Carapeços, Barcelos · Coordinates [41.6, −8.6] · Consultation date: 26 October 2026</p>
+  </div>
+</header>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="container">
+    <a href="#section-1">01 — PDM Assessment</a>
+    <a href="#section-2">02 — RGEU Housing</a>
+    <a href="#section-3">03 — Energy Analysis</a>
+    <a href="#section-4">04 — Accessibility</a>
+    <a href="#section-5">05 — Urban Requirements</a>
+    <a href="#section-6">06 — Synthesis</a>
+  </div>
+</nav>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<main>
+
+<!-- ========== SECTION 1: PDM BARCELOS ========== -->
+<section class="section" id="section-1">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">Section 01</span>
+      <h2>PDM Barcelos — Municipal Master Plan Assessment</h2>
+      <p class="section-desc">Technical and regulatory evaluation of the plot against the 1st Revision of the Barcelos Municipal Master Plan (Aviso n.º 7722/2015), covering land classification, building indices, setbacks, parking, and overlapping constraints.</p>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Requirement (Diploma + Article / Section)</th>
+            <th>Value or Criterion (SI)</th>
+            <th>Literal Citation (max 30 words)</th>
+            <th>Effect on Plot / Condition for Project</th>
+            <th>Consultation Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Land category and compatible uses</td>
+            <td>PDM de Barcelos (Aviso n.º 7722/2015), Art. 11.º, n.º 2 b) i), Art. 87.º, 88.º and 89.º</td>
+            <td>Urban land (urbanised / urbanisable), sub-category <em>Espaço Residencial Nível I</em> (ER I). Dominant use: residential (detached, terraced, or horizontal-property housing), admitting proximity commerce/services and small-scale domestic animal keeping.</td>
+            <td><span class="citation">"privilegia-se a função residencial, podendo acolher funções complementares de comércio e serviços de proximidade bem como outros usos, desde que compatíveis com a função residencial."</span></td>
+            <td>Validates the intended residential use and allows complementary commerce/services on the ground floor or attached unit, provided they are compatible.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>2. Utilisation index and maximum construction area</td>
+            <td>PDM de Barcelos, Art. 90.º, n.º 2</td>
+            <td>Maximum utilisation index (Iu): 1.0 m²/m². Maximum construction area: 1.0 × 1,523 m² = <strong>1,523 m²</strong>.</td>
+            <td><span class="citation">"O índice de utilização do solo não pode exceder o valor de 1 m²/m²."</span></td>
+            <td>The project may not exceed the cumulative maximum of 1,523 m² of gross construction area above and below ground (excluding parking).</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>3. Building height / storeys</td>
+            <td>PDM de Barcelos, Art. 90.º, n.º 3</td>
+            <td>Maximum façade height: <strong>7 m</strong>. Maximum number of storeys: <strong>2 floors</strong> above threshold level.</td>
+            <td><span class="citation">"A altura da fachada não pode exceder o valor de 7 m e o edifício desenvolver-se com o máximo de dois pisos acima da cota de soleira."</span></td>
+            <td>Restricts the altimetric profile of the building to a rigid ceiling of 2 storeys and 7 m façade height.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>4. Minimum setbacks (roads, boundaries, yards)</td>
+            <td>PDM de Barcelos, Art. 66.º and Art. 135.º (Table III)</td>
+            <td>Setback to municipal roads: 4.5 m from road axis (Local Access Network) or 6.5 m (Tertiary Network); on consolidated frontages, the dominant alignment is respected. Side and rear setbacks: <span class="flag no-source">NO SOURCE</span> in the PDM Regulation for sub-category ER I (missing document: <em>Regulamento da Urbanização e Edificação do Município de Barcelos</em> — RUEMB / applicable plot parameters).</td>
+            <td><span class="citation">"a implantação das edificações deve respeitar o alinhamento dominante da frente urbana onde se insere"</span></td>
+            <td>Requires the building to be set back from the axis of the adjacent road according to its road hierarchy, or aligned with adjacent buildings. Side and rear setbacks to be confirmed via RUEMB.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>5. Maximum footprint and maximum impermeable area</td>
+            <td>PDM de Barcelos, Art. 67.º, n.º 1 and Art. 90.º, n.º 1</td>
+            <td>Maximum occupation index: 50% → Maximum footprint: 50% × 1,523 m² = <strong>761.5 m²</strong>. Minimum permeability: 20% → Maximum impermeable area: 80% × 1,523 m² = <strong>1,218.4 m²</strong>.</td>
+            <td><span class="citation">"O índice de ocupação do solo não pode exceder o valor de 50 %."</span> / <span class="citation">"Deve ser garantida uma permeabilidade mínima do solo de 20 % relativamente à área da parcela"</span></td>
+            <td>The building footprint on the ground is limited to 761.5 m², and a minimum of 304.6 m² (20%) of non-paved permeable area must be maintained in the yard.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>6. Minimum parking required for the use</td>
+            <td>PDM de Barcelos, Art. 70.º, n.º 1 and Table II</td>
+            <td>Detached house — Private: 1 space/dwelling (c.a. &lt; 120 m²), 2 spaces (120–300 m²), or 3 spaces (c.a. &gt; 300 m²). Public: 1 space (c.a. ≤ 300 m²) or 2 spaces (c.a. &gt; 300 m²). Collective housing: per typology in Table II. Frontage requirement: public parking strip on the plot front with minimum extension of 30 m.</td>
+            <td><span class="citation">"As operações urbanísticas que deem origem a novas edificações... devem assegurar o estacionamento capaz de suprir as necessidades geradas pelo seu funcionamento, em conformidade com o estabelecido no Quadro II"</span></td>
+            <td>Requires drawing parking spaces within the plot and integrating or providing the public parking allocation on the adjacent road.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>7. Overlapping constraints on the plot (REN, RAN, water domain, heritage, risk)</td>
+            <td>PDM de Barcelos, Art. 1.º, n.º 3, Art. 3.º, n.º 1 c), Art. 7.º and 8.º</td>
+            <td><span class="flag no-source">NO SOURCE</span> for the graphical cadastral verification of incidences over coordinates [41.6, −8.6] (missing document: <em>Planta de Condicionantes</em> and <em>Planta de Ordenamento II</em> at plot scale). General rule: the Regulation subjects the land to the legal regime of current easements (REN, RAN, Water Domain, Fire Risk).</td>
+            <td><span class="citation">"A leitura do presente Regulamento é indissociável da documentação gráfica que compõe o Plano, nomeadamente, da Planta de Condicionantes e da Planta de Ordenamento I e II."</span></td>
+            <td>If consultation of the Constraint Plans reveals REN, RAN, watercourse, or high/very-high fire risk incidence, construction becomes subject to a binding opinion from the supervising authority or preventive silviculture measures.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>8. Non-aedificandi easements or height restrictions</td>
+            <td>PDM de Barcelos, Art. 17.º, n.º 3, Art. 28.º, 29.º, 30.º, Art. 90.º, n.º 3 and Art. 135.º</td>
+            <td>Height restriction: max 7 m and 2 storeys. General protection strips: 10 m to watercourses; 2.5 m / 1 m to water pipes and sewers; road easement of 4.5 m to 15 m from the municipal road axis. Specific graphical easements on the plot: <span class="flag no-source">NO SOURCE</span> (missing document: <em>Planta de Condicionantes</em>).</td>
+            <td><span class="citation">"As novas edificações devem assegurar 10 m de afastamento às linhas de água identificadas no presente Plano, salvo se outro afastamento vier a ser imposto ou permitido pela tutela."</span></td>
+            <td>The building is limited to 7 m in height and may not occupy protection strips of infrastructure, roads, or watercourses crossing or adjacent to the plot.</td>
+            <td>26/10/2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 2: RGEU HOUSING ========== -->
+<section class="section" id="section-2">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">Section 02</span>
+      <h2>RGEU — General Urban Building Regulations (Housing)</h2>
+      <p class="section-desc">Habitability, spatial, lighting, ventilation, and sanitary standards for residential buildings under the <em>Regulamento Geral das Edificações Urbanas</em> (Decreto-Lei n.º 38 382/1951, consolidated version).</p>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Article</th>
+            <th>Value or Criterion (SI)</th>
+            <th>Literal Citation (max 30 words)</th>
+            <th>Condition to Respect in Project</th>
+            <th>Consultation Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Minimum free ceiling height and floor-to-floor height in housing</td>
+            <td>RGEU, Art. 65.º, n.º 1 and n.º 2</td>
+            <td>Minimum floor-to-floor height: 2.70 m. Minimum free ceiling height: 2.40 m. Exceptions (service/circulation): 2.20 m in vestibules, corridors, sanitary facilities, pantries, and storage rooms.</td>
+            <td><span class="citation">"A altura mínima, piso a piso, em edificações destinadas à habitação é de 2,70m [...], não podendo ser o pé-direito livre mínimo inferior a 2,40 m."</span></td>
+            <td>Legal requirement: ensure a free ceiling height of 2.40 m in habitable rooms and a 2.70 m floor-to-floor dimension between finished floors, allowing reduction to 2.20 m exclusively in technical, sanitary, and internal circulation areas.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>2. Minimum areas and dimensions of residential rooms</td>
+            <td>RGEU, Art. 66.º, n.º 1; Art. 67.º, n.º 1; Art. 69.º, n.º 1</td>
+            <td>Double bedroom: 10.5 m²; Twin bedroom: 9 m²; Single bedroom: 6.5 m². Living room: 10 m² (T0/T1), 12 m² (T2), 16 m² (T3–T6). Kitchen: 6 m². Minimum gross area (Ab): T0 (35 m²), T1 (52 m²), T2 (72 m²), T3 (91 m²), T4 (105 m²). Minimum linear dimension: 2.10 m (if area &lt; 9.5 m²); circle of diameter ≥ 2.40 m (for area between 9.5 m² and 12 m²).</td>
+            <td><span class="citation">"Os compartimentos de habitação não poderão ser em número e área inferiores aos indicados no quadro [...]. Quando a respectiva área for menor que 9,5 m², a dimensão mínima será 2,10 m"</span></td>
+            <td>Legal requirement: dimension the usable area (Au) and habitable area (Ah) of each room respecting the minimums per typology (Tx) in the Table and ensuring the inscription of the regulatory manoeuvrability circles.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>3. Natural lighting openings (direct communication with the exterior)</td>
+            <td>RGEU, Art. 71.º, n.º 1</td>
+            <td>Total area of openings: not less than 1/10 (10%) of the room's usable area. Minimum absolute area: 1.08 m² (measured on the rough opening).</td>
+            <td><span class="citation">"Os compartimentos das habitações [...] serão sempre iluminados e ventilados por um ou mais vãos [...] cuja área total não será inferior a um décimo da área do compartimento com o mínimo de 1,08 m²"</span></td>
+            <td>Legal requirement: provide windows or openings in direct communication with the exterior in all habitable rooms, with a useful glazed area of at least 10% of the room's floor surface.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>4. Ventilation conditions of spaces</td>
+            <td>RGEU, Art. 71.º, n.º 1; Art. 72.º; Art. 87.º, n.º 1 and 2; Art. 109.º</td>
+            <td>General ventilation: cross ventilation generally ensured by windows on two opposite façades. Sanitary facilities: external opening with total area ≥ 0.54 m² and openable part ≥ 0.36 m² on the rough opening. If unfeasible, constant renewal by forced/mechanical ventilation or duct. Kitchens: devices for evacuation of fumes and gases (private ducts/chimneys).</td>
+            <td><span class="citation">"Deverá ficar assegurada a ventilação transversal do conjunto de cada habitação, em regra por meio de janelas dispostas em duas fachadas opostas."</span></td>
+            <td>Legal requirement: design the orientation of dwellings to allow cross air flow and ensure specific mechanical exhaust systems or ducts in sanitary facilities without direct lighting and in kitchens.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>5. Yards, setbacks, and salubrity conditions</td>
+            <td>RGEU, Art. 59.º; Art. 60.º; Art. 62.º, § 2.º; Art. 73.º; Art. 76.º</td>
+            <td>Setback between opposite façades: ≥ 10 m (if with housing openings). Yard depth: ≥ half the height of the adjacent rear façade, with a minimum of 6 m and free uncovered area ≥ 40 m². Front setback of windows: ≥ half the height of the opposite wall/façade, minimum 3 m and 2 m free width on each side of the axis. Wall protection: impermeable strip along the building with width ≥ 1 m.</td>
+            <td><span class="citation">"[...] a distância mínima entre fachadas de edificações nas quais existam vãos de compartimentos de habitação não poderá ser inferior a 10 metros."</span></td>
+            <td>Legal requirement: ensure a minimum 10 m setback from opposing façades with windows, guarantee the depth and minimum area of the private yard, and provide the impermeable protection strip on the adjacent ground.</td>
+            <td>26/10/2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 3: ENERGY ANALYSIS ========== -->
+<section class="section" id="section-3">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">Section 03</span>
+      <h2>Energy Analysis — SCE (Energy Performance of Buildings System)</h2>
+      <p class="section-desc">Assessment of energy performance requirements under the SCE regulatory framework. <strong>Note:</strong> the primary SCE legislation (Decreto-Lei n.º 101-D/2020, Decreto-Lei n.º 11/2025, SCE Manual, and regulatory Portarias) was not loaded into the source documents; most items are therefore flagged as <em>No Source</em>.</p>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Requirement (Diploma + Article / Section)</th>
+            <th>Value or Criterion (SI)</th>
+            <th>Literal Citation (max 30 words)</th>
+            <th>Condition to Respect in Project</th>
+            <th>Consultation Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Scope of operation (new building or major intervention) and applicable requirements</td>
+            <td><span class="flag no-source">NO SOURCE</span> (Decreto-Lei n.º 101-D/2020 / Decreto-Lei n.º 11/2025: absent from the specification documents)</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span> — The framework of the "new construction" operation of 1,523 m² and its applicable SCE requirements are not present in the sources.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>2. Energy performance requirements</td>
+            <td><span class="flag no-source">NO SOURCE</span> (Decreto-Lei n.º 101-D/2020 / SCE Manual: absent)</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span> — Nominal primary energy needs, maximum limits N<sub>pmax</sub>, NZEB indicators, and performance ratio are not present in the sources.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>3. Envelope conditions (transmittances, thermal bridges, openings, solar factors)</td>
+            <td><span class="flag no-source">NO SOURCE</span> (Decreto-Lei n.º 101-D/2020 / SCE Portarias: absent)</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span> — Maximum thermal transmittance coefficients U<sub>max</sub> per climate zone for Barcelos, g<sub>gl</sub> of glazed openings, and linear thermal bridges are not present in the sources.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>4. Ventilation conditions and indoor air quality</td>
+            <td>RGEU, Art. 71.º, n.º 1; Art. 108.º (IAQ Portaria / DL 101-D/2020: <span class="flag no-source">NO SOURCE</span>)</td>
+            <td>RGEU requirement: opening area ≥ 1/10 of usable area (min. 1.08 m²). Fresh air flow rates / Air changes per hour (SCE): <span class="flag no-source">NO SOURCE</span>.</td>
+            <td><span class="citation">"Os compartimentos das habitações [...] serão sempre iluminados e ventilados por um ou mais vãos [...] cuja área total não será inferior a um décimo da área do compartimento..."</span></td>
+            <td>RGEU requirement: ensure direct natural ventilation through façade openings. Specific SCE flow rate and filtration requirements are not present in the sources.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>5. Requirements on technical systems (HVAC, ventilation, hot water)</td>
+            <td><span class="flag no-source">NO SOURCE</span> (Decreto-Lei n.º 101-D/2020 / SCE Manual: absent)</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span> — Minimum efficiency of HVAC equipment, DHW systems, heat recovery, and energy metering are not present in the sources.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>6. Renewable energy production and fossil fuel restrictions</td>
+            <td><span class="flag no-source">NO SOURCE</span> (Decreto-Lei n.º 101-D/2020 / Decreto-Lei n.º 11/2025: absent)</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span> — Minimum renewable energy quota, mandatory solar/PV systems, and the fossil fuel phase-out stage of DL 11/2025 are not present in the sources.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>7. Energy certification (obligation and applicable class)</td>
+            <td><span class="flag no-source">NO SOURCE</span> (Decreto-Lei n.º 101-D/2020: absent)</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span> — The obligation to issue a Pre-Energy Certificate at the design stage and the minimum regulatory energy class are not present in the sources.</td>
+            <td>26/10/2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 4: ACCESSIBILITY ========== -->
+<section class="section" id="section-4">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">Section 04</span>
+      <h2>Accessibility Standards — Decreto-Lei n.º 163/2006</h2>
+      <p class="section-desc">Technical accessibility conditions for buildings, public establishments, public roads, and residential buildings under the <em>Regime da Acessibilidade</em> and its Annex of Technical Standards.</p>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Reference (Article / Section)</th>
+            <th>Value or Criterion (SI)</th>
+            <th>Literal Citation (max 30 words)</th>
+            <th>Condition to Respect in Project</th>
+            <th>Consultation Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Accessible route (public road, main entrance, and all spaces)</td>
+            <td>DL 163/2006, Art. 2.º, n.º 3; Annex, Sections 1.1, 1.2.1, 2.1.1, and 3.2.1</td>
+            <td>Sidewalks on public road: free width ≥ 1.50 m (continuous channel ≥ 1.20 m). Free height: ≥ 2.40 m (enclosed spaces) / ≥ 2.00 m (interiors). Entrance &amp; lobby: 360° rotation (diameter ≥ 1.50 m). 2-storey residential building: initial vertical mechanical means waived.</td>
+            <td><span class="citation">"Os edifícios e estabelecimentos devem ser dotados de pelo menos um percurso, designado de acessível, que proporcione o acesso seguro e confortável das pessoas com mobilidade condicionada..."</span></td>
+            <td>Legal requirement: ensure a continuous accessible route from Rua da Pia to the main entrance and common circulation areas of the ground floor, without steps or un-ramped thresholds.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>2. Entrance / exit doors — useful width</td>
+            <td>DL 163/2006, Annex, Sections 2.2.3, 3.3.8, 4.9.1, and 4.9.8</td>
+            <td>Main entrance/exit doors: useful width ≥ 0.87 m (open at 90°). Internal doors and dwellings: useful width ≥ 0.77 m and useful height ≥ 2.00 m. Floor thresholds: maximum height ≤ 0.02 m.</td>
+            <td><span class="citation">"As portas de entrada/saída dos edifícios e estabelecimentos devem ter um largura útil não inferior a 0,87 m, medida entre a face da folha da porta quando aberta..."</span></td>
+            <td>Legal requirement: design the exterior access door with a minimum free useful opening of 0.87 m and internal/dwelling doors with at least 0.77 m, eliminating thresholds above 2 cm.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>3. Circulations (landings, galleries, corridors) and manoeuvring zones</td>
+            <td>DL 163/2006, Annex, Sections 2.3.1, 2.3.3, 3.3.2, and 4.4.1</td>
+            <td>Common corridors/landings: width ≥ 1.20 m. Internal dwelling corridors: width ≥ 1.10 m (sections ≤ 1.50 m in length may have ≥ 0.90 m). Manoeuvring zones: 360° rotation (diameter ≥ 1.50 m); 180° rotation (1.50 m × 1.20 m).</td>
+            <td><span class="citation">"Os patamares, galerias e corredores devem possuir uma largura não inferior a 1,2 m."</span> and <span class="citation">"Rotação de 360°: A ≥ 1,50 m"</span></td>
+            <td>Legal requirement: maintain widths of 1.20 m in common areas and 1.10 m in the dwelling, ensuring 1.50 m manoeuvring zones at strategic locations and every 10 m of corridor.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>4. Handrails</td>
+            <td>DL 163/2006, Annex, Sections 2.3.4, 2.4.9, 2.5.8, 2.5.9, and 4.11.1</td>
+            <td>Grip: diameter/width between 0.035 m and 0.05 m; wall clearance ≥ 0.035 m. Height: 0.85 m to 0.90 m on stairs/corridors. Ramps: double (0.70–0.75 m and 0.90–0.95 m) if inclination &gt; 6%. Extension: ≥ 0.30 m at ends.</td>
+            <td><span class="citation">"Os corrimãos e as barras de apoio devem ter um diâmetro ou largura das superfícies de preensão compreendido entre 0,035 m e 0,05 m..."</span></td>
+            <td>Legal requirement: install continuous handrails on both sides of stairs and ramps in common areas, ensuring the 0.30 m horizontal extensions and the regulatory ergonomic section.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>5. Vertical access (lift, ramp, or platform)</td>
+            <td>DL 163/2006, Annex, Sections 2.5.1, 2.6.2, 3.2.1, and 3.2.2, n.º 1</td>
+            <td>Ramps: inclination ≤ 6% (level difference ≤ 0.60 m, length ≤ 10 m) or ≤ 8% (level difference ≤ 0.40 m, length ≤ 5 m); width ≥ 1.20 m. 2-storey residential building: initial installation of lift/mechanical means waived. Design provision: provide for future installation of a stair-lifting platform.</td>
+            <td><span class="citation">"Nos edifícios de habitação com um número de pisos sobrepostos inferior a cinco [...] podem não ser instalados meios mecânicos de comunicação vertical alternativos às escadas..."</span></td>
+            <td>Legal requirement: reserve in the architectural design the structural space and free path in common areas for the later installation of a stair-lifting platform without affecting the structure.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>6. Adapted sanitary facilities</td>
+            <td>DL 163/2006, Annex, Sections 2.9.4, 2.9.13, 2.9.19, and 3.3.4</td>
+            <td>Per dwelling: at least 1 adaptable sanitary facility with washbasin, toilet, bidet, and bathtub (or 0.80 m × 0.80 m shower tray with reservation for bathtub). Heights: toilet seat at 0.45 m (± 0.01 m); washbasin at 0.80 m (± 0.02 m). Rotation: 360° (diameter ≥ 1.50 m).</td>
+            <td><span class="citation">"Em cada habitação deve existir pelo menos uma instalação sanitária que satisfaça [...] a disposição dos aparelhos sanitários [...] permitir a colocação de barras de apoio..."</span></td>
+            <td>Legal requirement: design the main bathroom of the dwelling ensuring the internal 1.50 m diameter manoeuvring area, lateral transfer space at the toilet, and walls with resistance for future support bars.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>7. Reserved parking spaces</td>
+            <td>DL 163/2006, Annex, Sections 2.8.2, 2.8.3, and 3.2.6</td>
+            <td>Housing: capacity &lt; 13 spaces (exemption from reservation); 13 to 49 spaces (minimum 1 supplementary space in common area). Dimensions per space: useful width ≥ 2.50 m; lateral strip ≥ 1.00 m (may be shared); length ≥ 5.00 m. Signage: floor painting (≥ 1 m) and vertical sign.</td>
+            <td><span class="citation">"Os lugares de estacionamento reservados devem: 1) Ter uma largura útil não inferior a 2,5 m; 2) Possuir uma faixa de acesso lateral com uma largura útil não inferior a 1 m..."</span></td>
+            <td>Legal requirement: if the private/common car park of the building has 13 or more spaces, dimension 1 supplementary space with a total width of 3.50 m (2.50 m + 1.00 m access) duly signed.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>8. Applicable exceptions and conditions for invocation</td>
+            <td>DL 163/2006, Art. 10.º, n.º 1, 2, 4, and 5</td>
+            <td>Existing buildings: invocable if works are disproportionately difficult, financially unfeasible, or affect cultural/historical heritage. New buildings (housing): mandatory compliance in common areas and entrances. Exceptions require substantiation and a Liability Statement.</td>
+            <td><span class="citation">"[...] o cumprimento das normas técnicas de acessibilidade [...] não é exigível quando as obras necessárias à sua execução sejam desproporcionadamente difíceis, requeiram a aplicação de meios económico-financeiros desproporcionados..."</span></td>
+            <td>Legal requirement: being a new 2-storey construction, apply the standards fully in common areas and accesses; any technical exception justified must be expressly included in the Accessibility Plan.</td>
+            <td>26/10/2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 5: URBAN REQUIREMENTS ========== -->
+<section class="section" id="section-5">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">Section 05</span>
+      <h2>Urban Requirements — Licensing, Procedures, and Instruction</h2>
+      <p class="section-desc">Urban licensing procedures, mandatory documents, liability statements, external consultations, and enforcement provisions. <strong>Note:</strong> the RJUE (Decreto-Lei n.º 555/99, consolidated version) and Portaria n.º 320/2026/1 were not loaded into the source documents; related items are flagged accordingly.</p>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Requirement (Diploma + Article / Section)</th>
+            <th>Content / Value</th>
+            <th>Literal Citation (max 30 words)</th>
+            <th>Obligation for Future Project</th>
+            <th>Consultation Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Type of urban operation and its framework</td>
+            <td>DL 38382/1951 (RGEU), Art. 1.º; DL 163/2006, Art. 1.º, n.º 1 and Art. 2.º, n.º 3 (RJUE / Portaria n.º 320/2026/1: <span class="flag no-source">NO SOURCE</span>)</td>
+            <td>Legal requirement: the execution of new urban buildings and dwellings is subject to the general rules of the RGEU and the technical accessibility standards. The specific framework of "new construction" under the RJUE is not present in the sources.</td>
+            <td><span class="citation">"A execução de novas edificações ou de quaisquer obras de construção civil [...] subordinar-se-ão às disposições do presente regulamento."</span></td>
+            <td>Legal requirement: design the building project in strict conformity with the construction requirements of the RGEU and the accessibility regime.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>2. Applicable procedure (prior communication or licence) and justification</td>
+            <td>RGEU, Art. 2.º; DL 163/2006, Art. 3.º, n.º 1 (RJUE / Portaria n.º 320/2026/1: <span class="flag no-source">NO SOURCE</span>)</td>
+            <td>Legal requirement: execution of works requires prior municipal licence; the request must be refused if it does not meet accessibility requirements. The differentiation between licence and prior communication under the RJUE is not present in the sources.</td>
+            <td><span class="citation">"As câmaras municipais indeferem o pedido de licença ou autorização [...] referente a edifícios [...] quando estes não cumpram os requisitos técnicos estabelecidos neste decreto-lei."</span></td>
+            <td>Legal requirement: instruct the municipal licence procedure ensuring full compliance with the legal accessibility regime.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>3. Instruction elements and required documents (including the index calculation sheet)</td>
+            <td>DL 163/2006, Art. 3.º, n.º 5; RGEU, Art. 5.º (Portaria n.º 320/2026/1 / Index calculation sheet: <span class="flag no-source">NO SOURCE</span>)</td>
+            <td>Legal requirement: construction licensing requests must be accompanied by an Accessibility Plan. The list of instruction documents and the index calculation sheet of Portaria n.º 320/2026/1 are not present in the sources.</td>
+            <td><span class="citation">"Os pedidos referentes aos loteamentos e obras [...] devem ser instruídos com um plano de acessibilidades que apresente a rede de espaços e equipamentos acessíveis..."</span></td>
+            <td>Legal requirement: include the detailed Accessibility Plan in the set of drawn and written project documents.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>4. Delivery formats and formalities</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span> (The loaded sources do not contain provisions regarding digital formats or submission formalities of Portaria n.º 320/2026/1.)</td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td><span class="flag no-source">NO SOURCE</span></td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>5. Liability statements and required insurance</td>
+            <td>DL 163/2006, Art. 4.º, n.º 1, Art. 10.º, n.º 4, and Art. 17.º (Insurance and statement template of Portaria n.º 320/2026/1: <span class="flag no-source">NO SOURCE</span>)</td>
+            <td>Legal requirement: a liability statement is required to certify compliance or justify accessibility exceptions; designers and technical directors incur liability in case of infringement. Insurance requirements: <span class="flag no-source">NO SOURCE</span>.</td>
+            <td><span class="citation">"Incorrem em responsabilidade contra-ordenacional os agentes que tenham contribuído, por acção ou omissão, para a verificação dos factos [...] designadamente o projectista, o director técnico ou o dono da obra."</span></td>
+            <td>Legal requirement: sign the accessibility liability statement issued by the project author.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>6. External consultations / foreseeable opinions</td>
+            <td>DL 163/2006, Art. 10.º, n.º 8; RGEU, Art. 123.º (Specific RJUE tutelary opinions: <span class="flag no-source">NO SOURCE</span>)</td>
+            <td>Legal requirement: in buildings of special historical or architectural interest, approval depends on an opinion from the cultural heritage body. Current practice: verification with the local PDM of tree mass restrictions (west boundary).</td>
+            <td><span class="citation">"[...] a edifícios e respectivos espaços circundantes que revistam especial interesse histórico e arquitectónico [...] ficando a sua aprovação dependente do parecer favorável do Instituto Português do Património..."</span></td>
+            <td>Legal requirement: submit to the opinions of supervising entities if the property/zone has heritage protection classification.</td>
+            <td>26/10/2026</td>
+          </tr>
+          <tr>
+            <td>7. Applicable deadlines and consequences of subsequent control</td>
+            <td>RGEU, Art. 161.º, 162.º, and 165.º; DL 163/2006, Art. 16.º and 18.º (Municipal prior-control deadlines of the RJUE: <span class="flag no-source">NO SOURCE</span>)</td>
+            <td>Legal requirement: execution of works without a licence or in non-compliance with legal and accessibility standards constitutes a punishable misdemeanour with a fine, embargo, and demolition. Municipal prior-control deadlines: <span class="flag no-source">NO SOURCE</span>.</td>
+            <td><span class="citation">"A execução de quaisquer obras em violação das disposições deste regulamento, sem licença ou em desacordo com os seus termos [...] será punida com coima..."</span></td>
+            <td>Legal requirement: ensure total conformity of execution with the projects under penalty of embargo and application of misdemeanour sanctions.</td>
+            <td>26/10/2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 6: SYNTHESIS TABLE ========== -->
+<section class="section synthesis-table" id="section-6">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">Section 06</span>
+      <h2>Synthesis Table — Plot Overview by Regulatory Front</h2>
+      <p class="section-desc">Consolidated overview of the plot organised by five regulatory fronts: PDM, RJUE, RGEU, Accessibility (DL 163/2006), and SCE (DL 101-D/2020). Each front summarises only confirmed items from the analysis tables, separating applicable requirements from conditions dependent on future design decisions.</p>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Front</th>
+            <th>Verified Items</th>
+            <th>Imperative Conditions</th>
+            <th>Conditional Conditions / To Confirm</th>
+            <th>NO SOURCE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PDM</td>
+            <td>Land category (ER I), Utilisation index (1.0 m²/m²), Building height (max 7 m, 2 storeys), Occupation (50%), Permeability (20%), Parking (Art. 70.º).</td>
+            <td><span class="flag imperative">IMPERATIVE</span> Max Iu 1.0 m²/m² (max construction area 1,523 m²); max façade height 7 m and 2 storeys above threshold; max occupation 50% (761.5 m²) and min permeability 20% (304.6 m²) (PDM Barcelos, Art. 90.º, 67.º; 26/10/2026).</td>
+            <td><span class="flag conditional">CONDITIONAL</span> Side and rear setbacks; Overlapping constraints (REN, RAN, water domain, risk) for coordinates [41.6, −8.6].</td>
+            <td><span class="flag no-source">NO SOURCE</span> — <em>Regulamento da Urbanização e Edificação do Município de Barcelos</em> (RUEMB); <em>Planta de Condicionantes</em> and <em>Planta de Ordenamento II</em> at plot scale.</td>
+          </tr>
+          <tr>
+            <td>RJUE</td>
+            <td>Type of operation (new construction), Procedure (municipal licence), Instruction elements (Accessibility Plan).</td>
+            <td><span class="flag imperative">IMPERATIVE</span> The licence request must be accompanied by an Accessibility Plan and comply with the technical requirements of the RGEU and DL 163/2006 (DL 163/2006, Art. 3.º, n.º 1 and 5; 26/10/2026).</td>
+            <td><span class="flag conditional">CONDITIONAL</span> Appraisal deadlines and tacit approval; digital delivery formats.</td>
+            <td><span class="flag no-source">NO SOURCE</span> — RJUE (Decreto-Lei n.º 555/99, consolidated version) and Portaria n.º 320/2026/1 (complete list of instruction documents, index calculation sheet, prior-control deadlines, insurance).</td>
+          </tr>
+          <tr>
+            <td>RGEU</td>
+            <td>Ceiling height (min 2.40 m), Minimum room areas, Lighting openings (≥ 1/10 of usable area, min 1.08 m²), Ventilation, Yards (setback ≥ 10 m).</td>
+            <td><span class="flag imperative">IMPERATIVE</span> Ensure free ceiling height of 2.40 m; lighting openings ≥ 1/10 of the room area (min 1.08 m²); setback between opposite façades with openings ≥ 10 m (RGEU, Art. 65.º, 71.º, 59.º; 26/10/2026).</td>
+            <td><span class="flag conditional">CONDITIONAL</span> Exact dimensioning of usable areas per typology (T0–T4) to be confirmed depending on the final designed dwelling unit.</td>
+            <td>N/A (Base housing items are covered by the loaded extracts).</td>
+          </tr>
+          <tr>
+            <td>Accessibility (DL 163/2006)</td>
+            <td>Accessible route (free width ≥ 1.50 m), Doors (entrance ≥ 0.87 m), Common circulations (≥ 1.20 m), 1 adaptable sanitary facility per dwelling.</td>
+            <td><span class="flag imperative">IMPERATIVE</span> Ensure a continuous accessible route from the public road to the entrance and common areas of the ground floor; entrance doors with useful opening ≥ 0.87 m (DL 163/2006, Art. 2.º, n.º 3 and Annex; 26/10/2026).</td>
+            <td><span class="flag conditional">CONDITIONAL</span> Installation of a vertical mechanical communication means (initially waived for 2 storeys, but future installation of a lifting platform must be provided for); supplementary parking space only if total capacity is ≥ 13 spaces.</td>
+            <td>N/A (Base items are covered by the loaded extracts).</td>
+          </tr>
+          <tr>
+            <td>SCE (DL 101-D/2020)</td>
+            <td>Scope of operation, energy performance requirements, envelope conditions, ventilation and air quality, technical systems, renewable energy production, certification.</td>
+            <td><span class="flag imperative">IMPERATIVE</span> Ensure direct natural ventilation through façade openings (as per RGEU Art. 71.º, n.º 1, due to absence of specific SCE source).</td>
+            <td><span class="flag conditional">CONDITIONAL</span> All energy performance parameters, transmittances, SCE fresh air flow rates, and applicable minimum energy class.</td>
+            <td><span class="flag no-source">NO SOURCE</span> — Decreto-Lei n.º 101-D/2020, Decreto-Lei n.º 11/2025, SCE Manual, and Energy Performance Regulatory Portarias (absent from the loaded sources).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+  <div class="container">
+    <h3>Primary Legal Sources and References</h3>
+    <div class="footer-grid">
+      <div>
+        <h3 style="font-size:0.7rem; margin-bottom:0.75rem;">Municipal Planning</h3>
+        <ul>
+          <li><strong>PDM de Barcelos</strong> — 1st Revision, approved by the Barcelos Municipal Assembly on 19 June 2015 and published in the <em>Diário da República</em>, 2nd series, No. 134, through Aviso n.º 7722/2015, of 13 July 2015.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:0.7rem; margin-bottom:0.75rem;">National Building Regulations</h3>
+        <ul>
+          <li><strong>RGEU</strong> — <em>Regulamento Geral das Edificações Urbanas</em>, Decreto-Lei n.º 38 382, of 7 August 1951, consolidated by DL 555/99 and DL 177/2001.</li>
+          <li><strong>DL 163/2006</strong> — <em>Regime da Acessibilidade a edifícios e estabelecimentos que recebem público, via pública e edifícios habitacionais</em>, of 8 August 2006, with Annex of Technical Standards.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:0.7rem; margin-bottom:0.75rem;">Energy Performance (SCE)</h3>
+        <ul>
+          <li><strong>DL 101-D/2020</strong> — not loaded in the source documents.</li>
+          <li><strong>DL 11/2025</strong> — not loaded in the source documents.</li>
+          <li><strong>SCE Manual</strong> and Regulatory Portarias — not loaded in the source documents.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:0.7rem; margin-bottom:0.75rem;">Urban Licensing (RJUE)</h3>
+        <ul>
+          <li><strong>RJUE</strong> — Decreto-Lei n.º 555/99, consolidated version — not loaded in the source documents.</li>
+          <li><strong>Portaria n.º 320/2026/1</strong> — not loaded in the source documents.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Consultation date: 26 October 2026 · Plot: 1,523 m² · ER I · Carapeços, Barcelos</span>
+      <span>Compiled for academic purposes — content preserved from source documents without alteration.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== BACK TO TOP ==================== -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
+
+<script>
+// Back to top button visibility
+(function() {
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 600) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+
+</body>
+</html>
